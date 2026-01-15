@@ -1,0 +1,40 @@
+meta {
+  name: Obtener todos los vehículos
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{baseUrl}}/vehiculos
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+example {
+  name: 200 Response
+  description: Lista de vehículos obtenida correctamente
+  
+  request: {
+    url: {{baseUrl}}/vehiculos
+    method: GET
+    mode: none
+  }
+  
+  response: {
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}

@@ -1,0 +1,96 @@
+meta {
+  name: Crear un vehículo
+  type: http
+  seq: 8
+}
+
+post {
+  url: {{baseUrl}}/vehiculos/create
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+    "placa": "",
+    "descripcion": "",
+    "activo": false,
+    "alerta": false,
+    "lista_id": 0,
+    "accion_id": {}
+  }
+}
+
+example {
+  name: 201 Response
+  description: Vehículo creado correctamente
+  
+  request: {
+    url: {{baseUrl}}/vehiculos/create
+    method: POST
+    mode: json
+    body:json: {
+      {
+        "placa": "",
+        "descripcion": "",
+        "activo": false,
+        "alerta": false,
+        "lista_id": 0,
+        "accion_id": {}
+      }
+    }
+  }
+  
+  response: {
+    status: {
+      code: 201
+      text: Created
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}
+
+example {
+  name: 400 Response
+  description: Datos inválidos
+  
+  request: {
+    url: {{baseUrl}}/vehiculos/create
+    method: POST
+    mode: json
+    body:json: {
+      {
+        "placa": "",
+        "descripcion": "",
+        "activo": false,
+        "alerta": false,
+        "lista_id": 0,
+        "accion_id": {}
+      }
+    }
+  }
+  
+  response: {
+    status: {
+      code: 400
+      text: Bad Request
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}

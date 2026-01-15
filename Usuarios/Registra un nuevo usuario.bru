@@ -1,0 +1,65 @@
+meta {
+  name: Registra un nuevo usuario
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{baseUrl}}/users/register
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "usr_name": "",
+    "usr_passwd": "",
+    "usr_last_name": "",
+    "usr_first_name": ""
+  }
+}
+
+example {
+  name: 201 Response
+  description: Usuario registrado correctamente
+  
+  request: {
+    url: {{baseUrl}}/users/register
+    method: POST
+    mode: json
+    body:json: {
+      {
+        "usr_name": "",
+        "usr_passwd": "",
+        "usr_last_name": "",
+        "usr_first_name": ""
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 201
+      text: Created
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "success": true,
+          "message": "Usuario creado exitosamente",
+          "user": {
+            "usr_name": "nuevo",
+            "usr_first_name": "develop",
+            "usr_last_name": "developer"
+          }
+        }
+      '''
+    }
+  }
+}

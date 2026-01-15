@@ -1,0 +1,40 @@
+meta {
+  name: Obtener alertas pendientes (panel)
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{baseUrl}}/alertas/pendientes
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3JfaWQiOjEwMDMsInVzcl9uYW1lIjoiZGV2ZWxvcGVycyIsImlhdCI6MTc2ODUwMzQ1OCwiZXhwIjoxNzY4NTMyMjU4fQ.FqRCs_MCIGrIbw6IXnP_Wn6TTQps93tTMmv6PUFXnXU
+}
+
+example {
+  name: 200 Response
+  description: Listado de alertas pendientes
+  
+  request: {
+    url: {{baseUrl}}/alertas/pendientes
+    method: GET
+    mode: none
+  }
+  
+  response: {
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}

@@ -1,0 +1,47 @@
+meta {
+  name: Buscar listas por descripción
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{baseUrl}}/listas/buscar
+  body: none
+  auth: bearer
+}
+
+params:query {
+  "Ingrese la descripcion": 
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+example {
+  name: 200 Response
+  description: Listas encontradas
+  
+  request: {
+    url: {{baseUrl}}/listas/buscar
+    method: GET
+    mode: none
+    params:query: {
+      "Ingrese la descripcion": 
+    }
+  }
+  
+  response: {
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}

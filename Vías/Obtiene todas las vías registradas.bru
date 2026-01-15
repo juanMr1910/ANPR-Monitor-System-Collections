@@ -1,0 +1,93 @@
+meta {
+  name: Obtiene todas las vías registradas
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{baseUrl}}/via
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+example {
+  name: 200 Response
+  description: Listado de vías obtenido correctamente.
+  
+  request: {
+    url: {{baseUrl}}/via
+    method: GET
+    mode: none
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "success": true,
+          "data": [
+            {
+              "viaId": 20,
+              "viaName": "EN 20 CARWASH",
+              "viaType": 0
+            },
+            {
+              "viaId": 21,
+              "viaName": "EN 21 COLSUBSIDIO",
+              "viaType": 0
+            },
+            {
+              "viaId": 41,
+              "viaName": "SA 41 CARWASH",
+              "viaType": 1
+            },
+            {
+              "viaId": 49,
+              "viaName": "SA 49 COSTADO PISO1",
+              "viaType": 1
+            }
+          ]
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: 401 Response
+  description: No autorizado - Token JWT inválido o ausente
+  
+  request: {
+    url: {{baseUrl}}/via
+    method: GET
+    mode: none
+  }
+  
+  response: {
+    status: {
+      code: 401
+      text: Unauthorized
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}

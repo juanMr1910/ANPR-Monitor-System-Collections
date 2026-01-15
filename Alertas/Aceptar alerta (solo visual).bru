@@ -1,0 +1,46 @@
+meta {
+  name: Aceptar alerta (solo visual)
+  type: http
+  seq: 3
+}
+
+patch {
+  url: {{baseUrl}}/alertas/:id/aceptar
+  body: none
+  auth: bearer
+}
+
+params:path {
+  id: 
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3JfaWQiOjEwMDMsInVzcl9uYW1lIjoiZGV2ZWxvcGVycyIsImlhdCI6MTc2ODUwMzQ1OCwiZXhwIjoxNzY4NTMyMjU4fQ.FqRCs_MCIGrIbw6IXnP_Wn6TTQps93tTMmv6PUFXnXU
+}
+
+example {
+  name: 200 Response
+  
+  request: {
+    url: {{baseUrl}}/alertas/:id/aceptar
+    method: PATCH
+    mode: none
+    params:path: {
+      id: 
+    }
+  }
+  
+  response: {
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}

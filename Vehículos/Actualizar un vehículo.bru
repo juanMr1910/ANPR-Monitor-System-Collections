@@ -1,0 +1,108 @@
+meta {
+  name: Actualizar un vehículo
+  type: http
+  seq: 6
+}
+
+put {
+  url: {{baseUrl}}/vehiculos/:id
+  body: json
+  auth: bearer
+}
+
+params:path {
+  id: 
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+    "placa": "",
+    "descripcion": "",
+    "activo": false,
+    "alerta": false,
+    "lista_id": 0,
+    "accion_id": {}
+  }
+}
+
+example {
+  name: 200 Response
+  description: Vehículo actualizado correctamente
+  
+  request: {
+    url: {{baseUrl}}/vehiculos/:id
+    method: PUT
+    mode: json
+    params:path: {
+      id: 
+    }
+  
+    body:json: {
+      {
+        "placa": "",
+        "descripcion": "",
+        "activo": false,
+        "alerta": false,
+        "lista_id": 0,
+        "accion_id": {}
+      }
+    }
+  }
+  
+  response: {
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}
+
+example {
+  name: 404 Response
+  description: Vehículo no encontrado
+  
+  request: {
+    url: {{baseUrl}}/vehiculos/:id
+    method: PUT
+    mode: json
+    params:path: {
+      id: 
+    }
+  
+    body:json: {
+      {
+        "placa": "",
+        "descripcion": "",
+        "activo": false,
+        "alerta": false,
+        "lista_id": 0,
+        "accion_id": {}
+      }
+    }
+  }
+  
+  response: {
+    status: {
+      code: 404
+      text: Not Found
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}

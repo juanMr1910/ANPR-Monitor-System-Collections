@@ -1,0 +1,75 @@
+meta {
+  name: Obtener vehículo por ID
+  type: http
+  seq: 5
+}
+
+get {
+  url: {{baseUrl}}/vehiculos/:id
+  body: none
+  auth: bearer
+}
+
+params:path {
+  id: 
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+example {
+  name: 200 Response
+  description: Vehículo encontrado
+  
+  request: {
+    url: {{baseUrl}}/vehiculos/:id
+    method: GET
+    mode: none
+    params:path: {
+      id: 
+    }
+  }
+  
+  response: {
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}
+
+example {
+  name: 404 Response
+  description: Vehículo no encontrado
+  
+  request: {
+    url: {{baseUrl}}/vehiculos/:id
+    method: GET
+    mode: none
+    params:path: {
+      id: 
+    }
+  }
+  
+  response: {
+    status: {
+      code: 404
+      text: Not Found
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}

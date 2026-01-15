@@ -1,0 +1,62 @@
+meta {
+  name: Inicia sesión en el sistema
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{baseUrl}}/users/login
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "usr_name": "",
+    "usr_passwd": ""
+  }
+}
+
+example {
+  name: 200 Response
+  description: Inicio de sesión exitoso
+  
+  request: {
+    url: {{baseUrl}}/users/login
+    method: POST
+    mode: json
+    body:json: {
+      {
+        "usr_name": "",
+        "usr_passwd": ""
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "success": true,
+          "message": "Inicio de sesión correcto",
+          "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+          "user": {
+            "usr_name": "developers",
+            "usr_first_name": "Itegra",
+            "usr_last_name": "Team"
+          }
+        }
+      '''
+    }
+  }
+}

@@ -1,0 +1,40 @@
+meta {
+  name: Obtener todas las acciones disponibles (GET)
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{baseUrl}}/vehiculos/acciones
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+example {
+  name: 200 Response
+  description: Lista de acciones obtenida correctamente
+  
+  request: {
+    url: {{baseUrl}}/vehiculos/acciones
+    method: GET
+    mode: none
+  }
+  
+  response: {
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}

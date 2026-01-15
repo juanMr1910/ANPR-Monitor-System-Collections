@@ -1,0 +1,64 @@
+meta {
+  name: Obtiene los últimos movimientos almacenados en memoria
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{baseUrl}}/via-movements/last-movements
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+example {
+  name: 200 Response
+  description: Lista de movimientos obtenida correctamente.
+  
+  request: {
+    url: {{baseUrl}}/via-movements/last-movements
+    method: GET
+    mode: none
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "success": true,
+          "source": "RAM (worker)",
+          "count": 20,
+          "data": [
+            {
+              "viaId": 20,
+              "movDate": "2025-10-15T10:45:22.000Z",
+              "movPlate": "ABC123",
+              "movImageName": "8010\\251015104522000",
+              "ticId": "24851609190122200052170"
+            },
+            {
+              "viaId": 21,
+              "movDate": "2025-10-15T10:47:01.000Z",
+              "movPlate": "XYZ789",
+              "movImageName": "8011\\251015104701000",
+              "ticId": "21501609190122200051948"
+            }
+          ]
+        }
+      '''
+    }
+  }
+}

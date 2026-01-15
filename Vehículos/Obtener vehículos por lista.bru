@@ -1,0 +1,47 @@
+meta {
+  name: Obtener vehículos por lista
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{baseUrl}}/vehiculos/lista/:listaId
+  body: none
+  auth: bearer
+}
+
+params:path {
+  listaId: 
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+example {
+  name: 200 Response
+  description: Vehículos obtenidos correctamente
+  
+  request: {
+    url: {{baseUrl}}/vehiculos/lista/:listaId
+    method: GET
+    mode: none
+    params:path: {
+      listaId: 
+    }
+  }
+  
+  response: {
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}

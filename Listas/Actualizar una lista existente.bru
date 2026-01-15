@@ -1,0 +1,93 @@
+meta {
+  name: Actualizar una lista existente
+  type: http
+  seq: 5
+}
+
+put {
+  url: {{baseUrl}}/listas/:id
+  body: json
+  auth: bearer
+}
+
+params:path {
+  id: 
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+    "accionesIds": 0
+  }
+}
+
+example {
+  name: 200 Response
+  description: Lista actualizada correctamente
+  
+  request: {
+    url: {{baseUrl}}/listas/:id
+    method: PUT
+    mode: json
+    params:path: {
+      id: 
+    }
+  
+    body:json: {
+      {
+        "accionesIds": 0
+      }
+    }
+  }
+  
+  response: {
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}
+
+example {
+  name: 404 Response
+  description: Lista no encontrada
+  
+  request: {
+    url: {{baseUrl}}/listas/:id
+    method: PUT
+    mode: json
+    params:path: {
+      id: 
+    }
+  
+    body:json: {
+      {
+        "accionesIds": 0
+      }
+    }
+  }
+  
+  response: {
+    status: {
+      code: 404
+      text: Not Found
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}

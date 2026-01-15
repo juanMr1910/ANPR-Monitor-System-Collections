@@ -1,0 +1,48 @@
+meta {
+  name: VehiculoController_buscarVehiculos
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{baseUrl}}/vehiculos/buscar
+  body: none
+  auth: bearer
+}
+
+params:query {
+  placa: 
+  lista_id: 
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+example {
+  name: 200 Response
+  
+  request: {
+    url: {{baseUrl}}/vehiculos/buscar
+    method: GET
+    mode: none
+    params:query: {
+      placa: 
+      lista_id: 
+    }
+  }
+  
+  response: {
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}

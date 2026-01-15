@@ -1,0 +1,9 @@
+{
+  "version": "1",
+  "name": "ANPR Monitor System",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ]
+}

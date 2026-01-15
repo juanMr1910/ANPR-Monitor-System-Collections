@@ -1,0 +1,57 @@
+meta {
+  name: Crear una nueva lista
+  type: http
+  seq: 7
+}
+
+post {
+  url: {{baseUrl}}/listas/create
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+    "descripcion": "",
+    "activo": false,
+    "alerta": false,
+    "accionesIds": 0
+  }
+}
+
+example {
+  name: 201 Response
+  description: Lista creada correctamente
+  
+  request: {
+    url: {{baseUrl}}/listas/create
+    method: POST
+    mode: json
+    body:json: {
+      {
+        "descripcion": "",
+        "activo": false,
+        "alerta": false,
+        "accionesIds": 0
+      }
+    }
+  }
+  
+  response: {
+    status: {
+      code: 201
+      text: Created
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}

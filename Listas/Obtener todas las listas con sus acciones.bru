@@ -1,0 +1,40 @@
+meta {
+  name: Obtener todas las listas con sus acciones
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{baseUrl}}/listas
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3JfaWQiOjEwMDMsInVzcl9uYW1lIjoiZGV2ZWxvcGVycyIsImlhdCI6MTc2ODUwMzQ1OCwiZXhwIjoxNzY4NTMyMjU4fQ.FqRCs_MCIGrIbw6IXnP_Wn6TTQps93tTMmv6PUFXnXU
+}
+
+example {
+  name: 200 Response
+  description: Lista de todas las listas registradas
+  
+  request: {
+    url: {{baseUrl}}/listas
+    method: GET
+    mode: none
+  }
+  
+  response: {
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}
